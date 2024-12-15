@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英文單字測驗</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f2f5;
+        }
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .word-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .word {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .speaker-icon {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .option {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        .option:hover {
+            background-color: #f0f0f0;
+        }
+        .timer {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .feedback {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .results {
+            display: none;
+            margin-top: 20px;
+        }
+        .result-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .progress {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="progress">Question <span id="currentQuestion">1</span>/10</div>
+        <div class="timer">Time remaining: <span id="timeLeft">15</span>s</div>
+        <div class="word-container">
+            <div class="word" id="word"></div>
+            <div class="speaker-icon" onclick="speakWord()">🔊</div>
+        </div>
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+    <div class="results" id="results">
+        <h2>測驗結果</h2>
+        <div>總分: <span id="totalScore">0</span>/100</div>
+        <div id="resultsList"></div>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>
